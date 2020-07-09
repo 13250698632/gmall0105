@@ -1,4 +1,5 @@
 package com.lcm.bean;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;

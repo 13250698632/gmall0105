@@ -22,7 +22,7 @@ public class SpuController {
 
     @RequestMapping("spuImageList")
     @ResponseBody
-    public List<PmsProductImage> spuImageList(String spuId){
+    public List<PmsProductImage> spuImageList(String spuId) {
 
         List<PmsProductImage> pmsProductImages = pmsProductInfoService.spuImageList(spuId);
 
@@ -31,7 +31,7 @@ public class SpuController {
 
     @RequestMapping("spuSaleAttrList")
     @ResponseBody
-    public List<PmsProductSaleAttr> spuSaleAttrList(String spuId){
+    public List<PmsProductSaleAttr> spuSaleAttrList(String spuId) {
 
         List<PmsProductSaleAttr> pmsProductSaleAttrs = pmsProductInfoService.spuSaleAttrList(spuId);
 
@@ -40,7 +40,7 @@ public class SpuController {
 
     @RequestMapping("fileUpload")
     @ResponseBody
-    public String fileUpload(@RequestParam("file") MultipartFile multipartFile){
+    public String fileUpload(@RequestParam("file") MultipartFile multipartFile) {
 
         String path = PmsUploadUtil.uploadImage(multipartFile);
         return path;
@@ -49,8 +49,9 @@ public class SpuController {
 
     @RequestMapping("saveSpuInfo")
     @ResponseBody
-    public String saveSpuInfo(@RequestBody PmsProductInfo PmsProductInfo){
+    public String saveSpuInfo(@RequestBody PmsProductInfo PmsProductInfo) {
 
+        PmsProductInfo.setProductName(PmsProductInfo.getSpuName());
         pmsProductInfoService.saveSpuInfo(PmsProductInfo);
 
         return "succer";
@@ -58,7 +59,7 @@ public class SpuController {
 
     @RequestMapping("spuList")
     @ResponseBody
-    public List<PmsProductInfo> spuList(String catalog3Id){
+    public List<PmsProductInfo> spuList(String catalog3Id) {
 
         List<PmsProductInfo> pmsProductInfos = pmsProductInfoService.spuList(catalog3Id);
         return pmsProductInfos;

@@ -19,17 +19,27 @@ public class PmsProductInfo implements Serializable {
     @Column
     private String productName;
 
+    @Transient
+    private String spuName;
+
     @Column
     private String description;
 
     @Column
-    private  String catalog3Id;
+    private String catalog3Id;
 
     @Transient
     private List<PmsProductSaleAttr> spuSaleAttrList;
     @Transient
     private List<PmsProductImage> spuImageList;
 
+    public String getSpuName() {
+        return spuName;
+    }
+
+    public void setSpuName(String spuName) {
+        this.spuName = spuName;
+    }
 
     public String getProductName() {
         return productName;

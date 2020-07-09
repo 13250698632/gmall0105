@@ -13,7 +13,7 @@ public class PmsUploadUtil {
 
     public static String uploadImage(MultipartFile multipartFile) {
 
-        String imgUrl = "http://192.168.42.182";
+        String imgUrl = "http://192.168.1.105";
 
         String tracker = PmsUploadUtil.class.getResource("/tracker.conf").getPath();
 
@@ -24,7 +24,7 @@ public class PmsUploadUtil {
             //获得一个trackerServer的实例
             TrackerServer trackerServer = trackerClient.getTrackerServer();
             //通过tracker获得一个连接客户端
-            StorageClient storageClient = new StorageClient(trackerServer,null);
+            StorageClient storageClient = new StorageClient(trackerServer, null);
 
             //获取上传的二进制对象
             byte[] bytes = multipartFile.getBytes();
@@ -33,12 +33,12 @@ public class PmsUploadUtil {
             String originalFilename = multipartFile.getOriginalFilename();
 
             //截取图片类型
-            String extName = originalFilename.substring(originalFilename.lastIndexOf(".")+1);
+            String extName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
 
             String[] uploadInfos = storageClient.upload_file(bytes, extName, null);
 
             for (String uploadInfo : uploadInfos) {
-                imgUrl += "/"+uploadInfo;
+                imgUrl += "/" + uploadInfo;
             }
 
 

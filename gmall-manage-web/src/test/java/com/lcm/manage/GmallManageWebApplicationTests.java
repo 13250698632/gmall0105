@@ -19,10 +19,10 @@ class GmallManageWebApplicationTests {
         //获取配置文件路径
         String file = GmallManageWebApplicationTests.class.getResource("/tracker.conf").getPath();
         ClientGlobal.init(file);
-        TrackerClient trackerClient=new TrackerClient();
-        TrackerServer trackerServer=trackerClient.getTrackerServer();
-        StorageClient storageClient=new StorageClient(trackerServer,null);
-        String orginalFilename="C://Users//Administrator//Desktop//40a5449b7770747c.jpg";
+        TrackerClient trackerClient = new TrackerClient();
+        TrackerServer trackerServer = trackerClient.getTrackerServer();
+        StorageClient storageClient = new StorageClient(trackerServer, null);
+        String orginalFilename = "C://Users//Administrator//Desktop//40a5449b7770747c.jpg";
         String[] upload_file = storageClient.upload_file(orginalFilename, "jpg", null);
         for (int i = 0; i < upload_file.length; i++) {
             String s = upload_file[i];

@@ -21,7 +21,7 @@ public class PmsBaseAttrInfo implements Serializable {
     @Column
     private String isEnabled;
     @Transient //不被序列化
-    List<PmsBaseAttrValue> attrValueList;
+            List<PmsBaseAttrValue> attrValueList;
 
     public String getId() {
         return id;

@@ -22,25 +22,25 @@ public class CatalogController {
 
     @RequestMapping("getCatalog3")
     @ResponseBody
-    public List<PmsBaseCatalog3> getCatalog3(String catalog2Id){
+    public List<PmsBaseCatalog3> getCatalog3(String catalog2Id) {
 
-        List<PmsBaseCatalog3> PmsBaseCatalog3List =  catalogService.getCatalog3(catalog2Id);
+        List<PmsBaseCatalog3> PmsBaseCatalog3List = catalogService.getCatalog3(catalog2Id);
         return PmsBaseCatalog3List;
     }
 
     @RequestMapping("getCatalog2")
     @ResponseBody
-    public List<PmsBaseCatalog2> getCatalog2(String catalog1Id){
+    public List<PmsBaseCatalog2> getCatalog2(String catalog1Id) {
 
-        List<PmsBaseCatalog2> PmsBaseCatalog2List =  catalogService.getCatalog2(catalog1Id);
+        List<PmsBaseCatalog2> PmsBaseCatalog2List = catalogService.getCatalog2(catalog1Id);
         return PmsBaseCatalog2List;
     }
 
     @RequestMapping("getCatalog1")
     @ResponseBody
-    public List<PmsBaseCatalog1> getCatalog1(){
+    public List<PmsBaseCatalog1> getCatalog1() {
 
-        List<PmsBaseCatalog1> PmsBaseCatalog1List =  catalogService.getCatalog1();
+        List<PmsBaseCatalog1> PmsBaseCatalog1List = catalogService.getCatalog1();
         return PmsBaseCatalog1List;
     }
 }
