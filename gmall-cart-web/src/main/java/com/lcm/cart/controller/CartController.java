@@ -2,6 +2,7 @@ package com.lcm.cart.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
+import com.lcm.annotations.LoginRequired;
 import com.lcm.bean.OmsCartItem;
 import com.lcm.bean.PmsSkuInfo;
 import com.lcm.service.CartService;
@@ -32,7 +33,18 @@ public class CartController {
     @Reference
     CartService cartService;
 
+    @RequestMapping("toTrade")
+    @LoginRequired(loginSuccess = true)
+    public String toTrade(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap){
+
+        String memberId = (String)request.getAttribute("memberId");
+        String nickName = (String)request.getAttribute("nickname");
+
+        return "toTrade";
+    }
+
     @RequestMapping("quantityAdditionAndSubtraction")
+    @LoginRequired(loginSuccess = false)//false 登录不成功也可以访问
     public String addQuantity(String quantity,String skuId,ModelMap modelMap){
 
         String memberId = "1";
@@ -52,6 +64,7 @@ public class CartController {
     }
 
     @RequestMapping("checkCart")
+    @LoginRequired(loginSuccess = false)
     public String checkCart(String isChecked,String skuId,HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap){
 
         String memberId = "1";
@@ -72,6 +85,7 @@ public class CartController {
     }
 
     @RequestMapping("cartList")
+    @LoginRequired(loginSuccess = false)
     public String cartList(HttpServletRequest request, HttpServletResponse response, HttpSession session, ModelMap modelMap){
 
         List<OmsCartItem> omsCartItems = new ArrayList<>();
@@ -105,6 +119,7 @@ public class CartController {
     }
 
     @RequestMapping("addToCart")
+    @LoginRequired(loginSuccess = false)
     public String addToCart(String skuId, int quantity, HttpServletRequest request, HttpServletResponse response){
 
         List<OmsCartItem> omsCartItems = new ArrayList<>();
